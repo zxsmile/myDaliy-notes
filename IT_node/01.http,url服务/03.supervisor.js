@@ -4,5 +4,5 @@
    // npm -g install supervisor
 
 // 2.使用
-   // npm xxx.js 改为 supervisor xxx.js
+   // node xxx.js 改为 supervisor xxx.js
 
