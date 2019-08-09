@@ -1,25 +1,25 @@
 const koa = require('koa')
 const router = require('koa-router')()
+const views = require('koa-views')
 
 var app = new koa()
+app.use(views('views',{
+    extension:'ejs'
+}))
 
 app.use(async (ctx,next)=>{
+ ctx.state.userinfo='张三'
  await next()
- if(ctx.status===404){
-   
-         ctx.status = 404;
-         ctx.body='这是一个404页面'
-     
- }else{
-     console.log(ctx.url)
- }
 })
 
 router.get('/',async (ctx)=>{
-    ctx.body='首页'
+    let title='你好ejs'
+    await ctx.render('index',{
+        title:title
+    })
 })
 
-router.get('/news',async (ctx)=>{
+router.get('/news',async (ctx)=>{r
     ctx.body='我是新闻页'
 })
 
